@@ -18,7 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authenticationRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor backend corriendo en https://pdm-backend-1auj.onrender.com`);
 });
 
 // Manejar cierre del listener y pool
