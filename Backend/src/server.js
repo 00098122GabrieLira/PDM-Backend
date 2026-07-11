@@ -18,7 +18,17 @@ app.use(express.json());
 app.use("/api/auth", authenticationRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor backend corriendo en https://pdm-backend-1auj.onrender.com`);
+  console.log(
+    `Servidor backend corriendo en https://pdm-backend-1auj.onrender.com`,
+  );
+});
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "Backend is healthy",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Manejar cierre del listener y pool
