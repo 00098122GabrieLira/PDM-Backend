@@ -3,7 +3,7 @@ import pool from "../database/connection.js";
 export const findByUsername = async (username) => {
   try {
     const result = await pool.query(
-      `SELECT id_usuario, usuario, correo, contraseña FROM Usuarios WHERE Usuario = $1`,
+      `SELECT id_usuario, usuario, correo, contraseña FROM usuarios WHERE usuario = $1`,
       [username],
     );
 

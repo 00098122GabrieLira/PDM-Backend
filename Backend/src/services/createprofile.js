@@ -12,7 +12,7 @@ export const createProfile = async (userData) => {
 
     const result = await client.query(
       `
-      INSERT INTO Usuarios 
+      INSERT INTO usuarios 
       (usuario, correo, contraseña)
       VALUES ($1, $2, $3)
       RETURNING id_usuario, usuario, correo
