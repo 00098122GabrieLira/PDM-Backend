@@ -3,10 +3,11 @@ import pool from "../database/connection.js";
 import { generateHash } from "../utils/security/generateHash.js";
 
 export const createProfile = async (userData) => {
-  
+  let client;
+
   try {
-    const client = await pool.connect();
-    
+    client = await pool.connect();
+
     const hashedPassword = await generateHash(userData.password);
 
     const result = await client.query(
@@ -23,6 +24,6 @@ export const createProfile = async (userData) => {
   } catch (error) {
     throw error;
   } finally {
-    client.release();
+    if (client) client.release();
   }
 };
