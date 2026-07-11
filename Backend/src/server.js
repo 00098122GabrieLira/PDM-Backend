@@ -31,6 +31,15 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+app.get("/api/debug-env", (req, res) => {
+  res.json({
+    hasDbUrl: !!process.env.DATABASE_PUBLIC_URL,
+    dbUrlLength: process.env.DATABASE_PUBLIC_URL?.length || 0,
+    dbUrlStart: process.env.DATABASE_PUBLIC_URL?.slice(0, 15) || "undefined",
+    nodeEnv: process.env.NODE_ENV,
+  });
+});
+
 // Manejar cierre del listener y pool
 const gracefulShutdown = async () => {
   console.log("Cerrando recursos...");
