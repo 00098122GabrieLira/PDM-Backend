@@ -1,12 +1,10 @@
 // backend/src/controllers/authenticationController/signUp.js
-import pool from "../../database/connection.js";
 import { generateHash } from "../../utils/security/generateHash.js";
 import { createProfile } from "../../services/createprofile.js";
 import { validateSignUp } from "../../validators/authValidator.js";
 import { sanitizeInput } from "../../utils/helpers/sanitizer.js";
 
 export const signUp = async (req, res) => {
-  const client = await pool.connect();
 
   try {
     const sanitizedData = {
